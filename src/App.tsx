@@ -12,7 +12,7 @@ import type { Image, User, Account, Rows } from "../types";
 import rows from "./mocks/rows.json";
 
 // mockedData has to be replaced with parsed Promises’ data
-const mockedData: Row[] = rows.data;
+let mockedData: Row[] = rows.data;
 
 const dataConverter = (
   users: User[],
@@ -46,6 +46,7 @@ function App() {
       ([images, users, accounts]: [Image[], User[], Account[]]) => {
         console.log(dataConverter(users, accounts, images));
         setData(dataConverter(users, accounts, images));
+        mockedData = dataConverter(users, accounts, images);
       }
     );
   }, []);
